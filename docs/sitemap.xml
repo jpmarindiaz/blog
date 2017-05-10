@@ -57,6 +57,11 @@
   </url>
   
   <url>
+    <loc>/2015-10-23-que-hacer-contra-el-sesgo-que-ocasionan-las-encuestas-y-el-voto-desinformado/</loc>
+    <lastmod>2015-10-23T20:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/2015-07-23-hello-r-markdown/</loc>
     <lastmod>2015-07-23T21:13:14-05:00</lastmod>
   </url>
@@ -115,6 +120,12 @@
   
   <url>
     <loc>/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/voto-en-negro/</loc>
+    <lastmod>2015-10-23T20:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

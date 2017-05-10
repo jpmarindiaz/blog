@@ -1,4 +1,13 @@
-# ¿Qué hacer contra el sesgo que ocasionan las encuestas y el voto desinformado? 
+---
+title: Que hacer contra el sesgo que ocasionan las encuestas y el voto desinformado 
+lang: es
+date: 2015-10-23 20:00:00
+categories:
+    - Voto en negro
+tags:
+---
+
+¿Qué hacer contra el sesgo que ocasionan las encuestas y el voto desinformado?
 
 Los sistemas de votación tienen como objetivo principal producir una agregación de preferencias individuales que representen de manera justa las preferencias de un grupo.
 
