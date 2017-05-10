@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.18.1" />
+
+
+<title>Gitbook cheatsheet - jpmarindiaz</title>
+<meta property="og:title" content="Gitbook cheatsheet - jpmarindiaz">
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css' rel='stylesheet' type='text/css'>
+
+
+
+<link rel="stylesheet" href="../css/fonts.css" media="all">
+<link rel="stylesheet" href="../css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="../" class="nav-logo">
+    <img src="../images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="../about/">About</a></li>
+    
+    <li><a href="../projects/">Projects</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">2 min read</span>
+    
+
+    <h1 class="article-title">Gitbook cheatsheet</h1>
+
+    
+    <span class="article-date">December 2, 2016</span>
+    
+
+    <div class="article-content">
+      
+
+<h1 id="create-a-book">Create a book</h1>
+
+<p>GitBook can setup a boilerplate book:</p>
+
+<pre><code>gitbook init
+</code></pre>
+
+<p>If you wish to create the book into a new directory, you can do so by running gitbook init ./directory</p>
+
+<p>Preview and serve your book using: <code>gitbook serve</code>
+Or build the static website using: <code>gitbook build</code></p>
+
+<p>Generate a PDF file <code>gitbook pdf ./ ./mybook.pdf</code>
+Generate an ePub file <code>gitbook epub ./ ./mybook.epub</code>
+Generate a Mobi file <code>gitbook mobi ./ ./mybook.mobi</code></p>
+
+<h1 id="plugins">Plugins</h1>
+
+<pre><code>    &quot;plugins&quot;: [&quot;hide-published-with&quot;,&quot;addcssjs&quot;, &quot;sharing&quot;, &quot;footnote-string-to-number&quot;, &quot;richquotes&quot;, &quot;emphasize&quot;, &quot;image-captions&quot;, &quot;atoc&quot;, &quot;katex&quot;, &quot;autosize-iframe&quot;, &quot;collapsible-menu&quot;, &quot;printlinks&quot;],
+</code></pre>
+
+<h2 id="plugin">Plugin</h2>
+
+<p>image-caption</p>
+
+<pre><code>            &quot;attributes&quot;: { &quot;width&quot;: &quot;300&quot; },
+</code></pre>
+
+<h1 id="markdown">Markdown</h1>
+
+<h2 id="intro">Intro</h2>
+
+<pre><code>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. [1]
+
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+
+Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+This is some text[^1].
+
+[^1]: Some *crazy* footnote definition.
+
+
+## Rich quotes
+
+&gt; **Info** Info
+
+
+&gt; **Note** Note
+
+
+&gt; **Tag** Tag
+
+
+&gt; **Comment** Comment
+
+&gt; **Hint** Hint
+
+&gt; **Success** Success
+
+&gt; **Warning** Warning
+
+&gt; **Caution** Caution
+
+&gt; **Danger** Danger
+
+&gt; **Quote** Quote
+
+## Text highlight
+
+This text is {% em %}highlighted !{% endem %}
+
+This text is {% em %}highlighted with **markdown**!{% endem %}
+
+This text is {% em type=&quot;green&quot; %}highlighted in green!{% endem %}
+
+This text is {% em type=&quot;red&quot; %}highlighted in red!{% endem %}
+
+This text is {% em color=&quot;#ff0000&quot; %}highlighted with a custom color!{% endem %}
+
+![imagesss](assets/images/business-sprint.png)
+
+![Alt text][id]
+
+[id]: assets/images/business-backlog.png  &quot;Optional title attribute&quot;
+</code></pre>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="../index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="../images/hugo-logo.png" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  </body>
+</html>
+

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>/2016-12-26-command-line-cheatsheet/</loc>
+    <lastmod>2016-12-26T08:45:24-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2016-12-02-gitbook-cheatsheet/</loc>
+    <lastmod>2016-12-02T18:50:16+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2016-12-02-git-lfs/</loc>
+    <lastmod>2016-12-02T18:40:30+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2016-10-24-git/github-things-i-keep-googling/</loc>
+    <lastmod>2016-10-24T10:59:37+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/human-vs-machine/</loc>
+    <lastmod>2016-10-24T09:58:42+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/espanol/</loc>
+    <lastmod>2016-10-18T06:32:07+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2016-10-17-sublimetext-setup/</loc>
+    <lastmod>2016-10-17T11:44:40+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/projects/</loc>
+    <lastmod>2016-10-17T10:26:39+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/home/</loc>
+    <lastmod>2016-10-16T15:01:58+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/proyectos/</loc>
+    <lastmod>2016-10-16T15:01:58+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/about/</loc>
+    <lastmod>2016-05-05T21:48:51-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2015-07-23-hello-r-markdown/</loc>
+    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2015-01-01-lorem-ipsum/</loc>
+    <lastmod>2015-01-01T13:09:13-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/dev/</loc>
+    <lastmod>2016-12-26T08:45:24-06:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/plot/</loc>
+    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2016-12-26T08:45:24-06:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/r/</loc>
+    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/r-markdown/</loc>
+    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/regression/</loc>
+    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/sublime/</loc>
+    <lastmod>2016-10-17T11:44:40+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2016-12-26T08:45:24-06:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

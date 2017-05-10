@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on jpmarindiaz</title>
+    <link>/post/index.xml</link>
+    <description>Recent content in Posts on jpmarindiaz</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 26 Dec 2016 08:45:24 -0600</lastBuildDate>
+    <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Command line cheatsheet</title>
+      <link>/2016-12-26-command-line-cheatsheet/</link>
+      <pubDate>Mon, 26 Dec 2016 08:45:24 -0600</pubDate>
+      
+      <guid>/2016-12-26-command-line-cheatsheet/</guid>
+      <description>
+
+&lt;h2 id=&#34;merge-files-into-one&#34;&gt;Merge files into one&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://stackoverflow.com/questions/1653063/how-do-i-include-a-blank-line-between-files-im-concatenating-with-cat&#34;&gt;http://stackoverflow.com/questions/1653063/how-do-i-include-a-blank-line-between-files-im-concatenating-with-cat&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ls -1 | while read f; do cat &amp;quot;$f&amp;quot;; done &amp;gt; ../../archive.json
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Gitbook cheatsheet</title>
+      <link>/2016-12-02-gitbook-cheatsheet/</link>
+      <pubDate>Fri, 02 Dec 2016 18:50:16 +0000</pubDate>
+      
+      <guid>/2016-12-02-gitbook-cheatsheet/</guid>
+      <description>
+
+&lt;h1 id=&#34;create-a-book&#34;&gt;Create a book&lt;/h1&gt;
+
+&lt;p&gt;GitBook can setup a boilerplate book:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;gitbook init
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you wish to create the book into a new directory, you can do so by running gitbook init ./directory&lt;/p&gt;
+
+&lt;p&gt;Preview and serve your book using: &lt;code&gt;gitbook serve&lt;/code&gt;
+Or build the static website using: &lt;code&gt;gitbook build&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Generate a PDF file &lt;code&gt;gitbook pdf ./ ./mybook.pdf&lt;/code&gt;
+Generate an ePub file &lt;code&gt;gitbook epub ./ ./mybook.epub&lt;/code&gt;
+Generate a Mobi file &lt;code&gt;gitbook mobi ./ ./mybook.mobi&lt;/code&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;plugins&#34;&gt;Plugins&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;    &amp;quot;plugins&amp;quot;: [&amp;quot;hide-published-with&amp;quot;,&amp;quot;addcssjs&amp;quot;, &amp;quot;sharing&amp;quot;, &amp;quot;footnote-string-to-number&amp;quot;, &amp;quot;richquotes&amp;quot;, &amp;quot;emphasize&amp;quot;, &amp;quot;image-captions&amp;quot;, &amp;quot;atoc&amp;quot;, &amp;quot;katex&amp;quot;, &amp;quot;autosize-iframe&amp;quot;, &amp;quot;collapsible-menu&amp;quot;, &amp;quot;printlinks&amp;quot;],
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;plugin&#34;&gt;Plugin&lt;/h2&gt;
+
+&lt;p&gt;image-caption&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;            &amp;quot;attributes&amp;quot;: { &amp;quot;width&amp;quot;: &amp;quot;300&amp;quot; },
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;markdown&#34;&gt;Markdown&lt;/h1&gt;
+
+&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. [1]
+
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+
+Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+This is some text[^1].
+
+[^1]: Some *crazy* footnote definition.
+
+
+## Rich quotes
+
+&amp;gt; **Info** Info
+
+
+&amp;gt; **Note** Note
+
+
+&amp;gt; **Tag** Tag
+
+
+&amp;gt; **Comment** Comment
+
+&amp;gt; **Hint** Hint
+
+&amp;gt; **Success** Success
+
+&amp;gt; **Warning** Warning
+
+&amp;gt; **Caution** Caution
+
+&amp;gt; **Danger** Danger
+
+&amp;gt; **Quote** Quote
+
+## Text highlight
+
+This text is {% em %}highlighted !{% endem %}
+
+This text is {% em %}highlighted with **markdown**!{% endem %}
+
+This text is {% em type=&amp;quot;green&amp;quot; %}highlighted in green!{% endem %}
+
+This text is {% em type=&amp;quot;red&amp;quot; %}highlighted in red!{% endem %}
+
+This text is {% em color=&amp;quot;#ff0000&amp;quot; %}highlighted with a custom color!{% endem %}
+
+![imagesss](assets/images/business-sprint.png)
+
+![Alt text][id]
+
+[id]: assets/images/business-backlog.png  &amp;quot;Optional title attribute&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>git lfs</title>
+      <link>/2016-12-02-git-lfs/</link>
+      <pubDate>Fri, 02 Dec 2016 18:40:30 +0000</pubDate>
+      
+      <guid>/2016-12-02-git-lfs/</guid>
+      <description>&lt;p&gt;For MACOS&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;brew install git-lfs
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Select the file types you&amp;rsquo;d like Git LFS to manage (or directly edit your .gitattributes). You can configure additional file extensions at anytime.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git lfs track &amp;quot;*.largefileext&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Commit and push to GitHub.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git add file.largefileext
+git commit -m &amp;quot;Add design file&amp;quot;
+git push origin master
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Git/github things I keep googling</title>
+      <link>/2016-10-24-git/github-things-i-keep-googling/</link>
+      <pubDate>Mon, 24 Oct 2016 10:59:37 +0000</pubDate>
+      
+      <guid>/2016-10-24-git/github-things-i-keep-googling/</guid>
+      <description>
+
+&lt;h2 id=&#34;how-to-change-origin-remote&#34;&gt;How to change origin remote&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;git remote set-url origin git://new.url.here&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;git-discard-uncommited-changes&#34;&gt;Git discard uncommited changes&lt;/h2&gt;
+
+&lt;p&gt;For unstaged changes &lt;code&gt;git checkout -- .&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;For staged and unstaged &lt;code&gt;git reset --hard&lt;/code&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>SublimeText setup</title>
+      <link>/2016-10-17-sublimetext-setup/</link>
+      <pubDate>Mon, 17 Oct 2016 11:44:40 +0000</pubDate>
+      
+      <guid>/2016-10-17-sublimetext-setup/</guid>
+      <description>&lt;p&gt;Sublime packages&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Color Helper&lt;/li&gt;
+&lt;li&gt;EncodingHelper (&lt;a href=&#34;https://github.com/titoBouzout/EncodingHelper&#34;&gt;https://github.com/titoBouzout/EncodingHelper&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Launch sublime from terminal (MACOS)
+&lt;a href=&#34;http://olivierlacan.com/posts/launch-sublime-text-3-from-the-command-line/&#34;&gt;http://olivierlacan.com/posts/launch-sublime-text-3-from-the-command-line/&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ln -s &amp;quot;/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl&amp;quot; /usr/local/bin/subl
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Hello R Markdown</title>
+      <link>/2015-07-23-hello-r-markdown/</link>
+      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
+      
+      <guid>/2015-07-23-hello-r-markdown/</guid>
+      <description>&lt;!-- BLOGDOWN-HEAD --&gt;
+
+
+
+&lt;!-- /BLOGDOWN-HEAD --&gt;
+
+&lt;!-- BLOGDOWN-BODY-BEFORE --&gt;
+
+&lt;!-- /BLOGDOWN-BODY-BEFORE --&gt;
+
+&lt;div id=&#34;r-markdown&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;R Markdown&lt;/h1&gt;
+&lt;p&gt;This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see &lt;a href=&#34;http://rmarkdown.rstudio.com&#34; class=&#34;uri&#34;&gt;http://rmarkdown.rstudio.com&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You can embed an R code chunk like this:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(cars)
+##      speed           dist       
+##  Min.   : 4.0   Min.   :  2.00  
+##  1st Qu.:12.0   1st Qu.: 26.00  
+##  Median :15.0   Median : 36.00  
+##  Mean   :15.4   Mean   : 42.98  
+##  3rd Qu.:19.0   3rd Qu.: 56.00  
+##  Max.   :25.0   Max.   :120.00
+fit &amp;lt;- lm(dist ~ speed, data = cars)
+fit
+## 
+## Call:
+## lm(formula = dist ~ speed, data = cars)
+## 
+## Coefficients:
+## (Intercept)        speed  
+##     -17.579        3.932&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;including-plots&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Including Plots&lt;/h1&gt;
+&lt;p&gt;You can also embed plots. See Figure &lt;a href=&#34;#fig:pie&#34;&gt;1&lt;/a&gt; for example:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;par(mar = c(0, 1, 0, 1))
+pie(
+  c(280, 60, 20),
+  c(&amp;#39;Sky&amp;#39;, &amp;#39;Sunny side of pyramid&amp;#39;, &amp;#39;Shady side of pyramid&amp;#39;),
+  col = c(&amp;#39;#0292D8&amp;#39;, &amp;#39;#F7EA39&amp;#39;, &amp;#39;#C4B632&amp;#39;),
+  init.angle = -50, border = NA
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:pie&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;#####content/post/2015-07-23-r-rmarkdown_files/figure-html/pie-1.png&#34; alt=&#34;A fancy pie chart.&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 1: A fancy pie chart.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Lorem Ipsum</title>
+      <link>/2015-01-01-lorem-ipsum/</link>
+      <pubDate>Thu, 01 Jan 2015 13:09:13 -0600</pubDate>
+      
+      <guid>/2015-01-01-lorem-ipsum/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Lorem ipsum&lt;/strong&gt; dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore &lt;em&gt;magna aliqua&lt;/em&gt;. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
