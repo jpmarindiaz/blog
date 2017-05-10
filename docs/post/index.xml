@@ -6,8 +6,22 @@
     <description>Recent content in Posts on jpmarindiaz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 26 Dec 2016 08:45:24 -0600</lastBuildDate>
+    <lastBuildDate>Wed, 10 May 2017 00:00:00 +0000</lastBuildDate>
     <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>A viztype a day...</title>
+      <link>/2017-05-10-a-viztype-a-day.../</link>
+      <pubDate>Wed, 10 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017-05-10-a-viztype-a-day.../</guid>
+      <description>&lt;p&gt;There are 235 days left in the year. I will start today to post a new visualization type every day on twitter with the hashtag #viztype&lt;/p&gt;
+
+&lt;p&gt;There are a bunch of different visualization types. Most people can recall only a handful but in reality I there are a couple hundred already out there.&lt;/p&gt;
+
+&lt;p&gt;If you want to follow the conversation around visualization types please follow #viztype on twitter.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Command line cheatsheet</title>

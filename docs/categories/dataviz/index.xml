@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dataviz on jpmarindiaz</title>
+    <link>/categories/dataviz/index.xml</link>
+    <description>Recent content in Dataviz on jpmarindiaz</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="/categories/dataviz/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>A viztype a day...</title>
+      <link>/2017-05-10-a-viztype-a-day.../</link>
+      <pubDate>Wed, 10 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017-05-10-a-viztype-a-day.../</guid>
+      <description>&lt;p&gt;There are 235 days left in the year. I will start today to post a new visualization type every day on twitter with the hashtag #viztype&lt;/p&gt;
+
+&lt;p&gt;There are a bunch of different visualization types. Most people can recall only a handful but in reality I there are a couple hundred already out there.&lt;/p&gt;
+
+&lt;p&gt;If you want to follow the conversation around visualization types please follow #viztype on twitter.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
