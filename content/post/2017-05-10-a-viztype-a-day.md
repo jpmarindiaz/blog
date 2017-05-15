@@ -7,10 +7,12 @@ categories:
 
 There are 235 days left in the year. I will start today to post a new visualization type every day on twitter with the hashtag #viztype
 
-There are a bunch of different visualization types. Most people can recall only a handful but in reality I there are a couple hundred already out there.
+There are a bunch of different visualization types. Most people can recall only a handful but in reality there are a couple hundred already out there.
 
 If you want to follow the conversation around visualization types please follow [#viztype](https://twitter.com/hashtag/viztype?src=hash) on twitter.
 
+
+Updates here:
 
 - 2017-05-10 [Pie chart](https://twitter.com/jpmarindiaz/status/862337558256115714)
 - 2017-05-11 [Waffle Chart](https://twitter.com/jpmarindiaz/status/862742294499282944)
