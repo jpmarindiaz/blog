@@ -9,6 +9,32 @@
     <atom:link href="/categories/dev/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>S3 bucket public access policy</title>
+      <link>/2017-06-17-s3-bucket-public-access-policy/</link>
+      <pubDate>Sat, 17 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017-06-17-s3-bucket-public-access-policy/</guid>
+      <description>&lt;p&gt;Use this policy for making a bucket public.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+    &amp;quot;Version&amp;quot;: &amp;quot;2012-10-17&amp;quot;,
+    &amp;quot;Statement&amp;quot;: [
+        {
+            &amp;quot;Sid&amp;quot;: &amp;quot;AllowPublicRead&amp;quot;,
+            &amp;quot;Effect&amp;quot;: &amp;quot;Allow&amp;quot;,
+            &amp;quot;Principal&amp;quot;: {
+                &amp;quot;AWS&amp;quot;: &amp;quot;*&amp;quot;
+            },
+            &amp;quot;Action&amp;quot;: &amp;quot;s3:GetObject&amp;quot;,
+            &amp;quot;Resource&amp;quot;: &amp;quot;arn:aws:s3:::mybucket/*&amp;quot;
+        }
+    ]
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Command line cheatsheet</title>
       <link>/2016-12-26-command-line-cheatsheet/</link>
       <pubDate>Mon, 26 Dec 2016 08:45:24 -0600</pubDate>
