@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.18.1" />
+
+
+<title>Rewriting pystr::format function in base R rmd - jpmarindiaz</title>
+<meta property="og:title" content="Rewriting pystr::format function in base R rmd - jpmarindiaz">
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css' rel='stylesheet' type='text/css'>
+
+
+
+<link rel="stylesheet" href="../css/fonts.css" media="all">
+<link rel="stylesheet" href="../css/main.css" media="all">
+
+
+
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="../" class="nav-logo">
+    <img src="../images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="../about/">About</a></li>
+    
+    <li><a href="../projects/">Projects</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">2 min read</span>
+    
+
+    <h1 class="article-title">Rewriting pystr::format function in base R rmd</h1>
+
+    
+    <span class="article-date">July 20, 2017</span>
+    
+
+    <div class="article-content">
+
+
+
+<pre class="r"><code>rep_tpl &lt;- function(tpl, l){
+  if(class(l) == &quot;list&quot;){
+    listToNameValue &lt;- function(l){
+      mapply(function(i,j) list(name = j, value = i), l, names(l), SIMPLIFY = FALSE)
+    }
+    f &lt;- function(tpl,l){
+      gsub(paste0(&quot;{&quot;,l$name,&quot;}&quot;), l$value, tpl, fixed = TRUE)
+    }
+    return( Reduce(f,listToNameValue(l), init = tpl))
+  }
+  if(class(l) == &quot;data.frame&quot;){
+    myTranspose &lt;- function(x) lapply(1:nrow(x), function(i) lapply(d, &quot;[[&quot;, i))
+    return( unlist(lapply(myTranspose(l), function(l, tpl) rep_tpl(tpl, l), tpl = tpl)) )
+  }
+}</code></pre>
+<pre class="r"><code>tpl &lt;- &quot;{name} fdla {last} {other}&quot;
+l &lt;- list(name = &quot;NAME&quot;, last = &quot;LAST&quot;, other = &quot;OTHER&quot;,  mote = &quot;fdasf&quot;)
+d &lt;- data.frame(name = c(&quot;ana&quot;,&quot;jp&quot;), last = c(&quot;heran&quot;, &quot;marin&quot;), n = c(1,2))
+
+rep_tpl(tpl, l)</code></pre>
+<pre><code>## [1] &quot;NAME fdla LAST OTHER&quot;</code></pre>
+<pre class="r"><code>rep_tpl(tpl, d)</code></pre>
+<pre><code>## [1] &quot;ana fdla heran {other}&quot; &quot;jp fdla marin {other}&quot;</code></pre>
+<pre class="r"><code>pystr::pystr_format(tpl, l)</code></pre>
+<pre><code>## [1] &quot;NAME fdla LAST OTHER&quot;</code></pre>
+<pre class="r"><code>pystr::pystr_format(tpl, d)</code></pre>
+<pre><code>##      [,1]                    
+## [1,] &quot;ana fdla heran {other}&quot;
+## [2,] &quot;jp fdla marin {other}&quot;</code></pre>
+<pre class="r"><code>microbenchmark::microbenchmark(
+  rep_tpl(tpl, l),
+  pystr::pystr_format(tpl, l)
+)</code></pre>
+<pre><code>## Unit: microseconds
+##                         expr   min      lq      mean   median      uq
+##              rep_tpl(tpl, l) 42.30 45.9445  54.33717  48.2235  55.710
+##  pystr::pystr_format(tpl, l) 93.75 97.1685 112.37807 101.4015 107.138
+##      max neval
+##  134.490   100
+##  300.747   100</code></pre>
+<pre class="r"><code>microbenchmark::microbenchmark(
+  rep_tpl(tpl, d),
+  pystr::pystr_format(tpl, d)
+)</code></pre>
+<pre><code>## Unit: microseconds
+##                         expr     min       lq     mean   median       uq
+##              rep_tpl(tpl, d) 152.427 187.6950 244.2666 224.5470 256.1775
+##  pystr::pystr_format(tpl, d) 404.944 489.1605 560.7437 533.1645 610.3180
+##       max neval
+##   510.121   100
+##  1394.308   100</code></pre>
+
+    </div>
+  </article>
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'jpmarindiaz';
+    var disqus_identifier = '\/2017-07-20-rewriting-pystrformat-function-in-base-r-rmd\/';
+    var disqus_title = 'Rewriting pystr::format function in base R rmd';
+    var disqus_url = '\/2017-07-20-rewriting-pystrformat-function-in-base-r-rmd\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="../index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="../images/hugo-logo.png" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  </body>
+</html>
+

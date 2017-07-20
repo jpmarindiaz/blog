@@ -6,8 +6,98 @@
     <description>Recent content on jpmarindiaz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 17 Jun 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 20 Jul 2017 00:00:00 +0000</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Rewriting pystr::pystr_format function in base R</title>
+      <link>/2017-07-20-rewriting-pystrpystr_format-function-in-base-r/</link>
+      <pubDate>Thu, 20 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017-07-20-rewriting-pystrpystr_format-function-in-base-r/</guid>
+      <description>&lt;p&gt;I recurrently want to render templates like this one: &lt;code&gt;&amp;quot;Hola {first_name} {last_name}&amp;quot;&lt;/code&gt; with values in a list, like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;template &amp;lt;- &amp;quot;Hola {first_name} {last_name}&amp;quot;
+renderMyTemplate(template, list(first_name = &amp;quot;JP&amp;quot;, last_name=&amp;quot;Marín Díaz&amp;quot;))
+# &amp;quot;Hola JP Marín Díaz&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I was using the &lt;code&gt;pystr&lt;/code&gt; package for this. Actually I was using the whole package for only one of its functions: &lt;code&gt;pystr_format()&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;A few days ago, we realized the the package was no &lt;a href=&#34;https://github.com/Ironholds/pystr/issues/11&#34;&gt;longer maintained&lt;/a&gt; for the latest R version. Some efforts to keep it alive in CRAN are on the way. For those like myself who only need to format templates here is function to do exactly this using only base R. It works for data.frames too and it happens to be faster than the good old &lt;code&gt;pystr_format()&lt;/code&gt;, at least in the silly benchmark I performed.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;
+tpl_format &amp;lt;- function(tpl, l){
+  if(class(l) == &amp;quot;list&amp;quot;){
+    listToNameValue &amp;lt;- function(l){
+      mapply(function(i,j) list(name = j, value = i), l, names(l), SIMPLIFY = FALSE)
+    }
+    f &amp;lt;- function(tpl,l){
+      gsub(paste0(&amp;quot;{&amp;quot;,l$name,&amp;quot;}&amp;quot;), l$value, tpl, fixed = TRUE)
+    }
+    return( Reduce(f,listToNameValue(l), init = tpl))
+  }
+  if(class(l) == &amp;quot;data.frame&amp;quot;){
+    myTranspose &amp;lt;- function(x) lapply(1:nrow(x), function(i) lapply(d, &amp;quot;[[&amp;quot;, i))
+    return( unlist(lapply(myTranspose(l), function(l, tpl) rep_tpl(tpl, l), tpl = tpl)) )
+  }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r test&#34;&gt;tpl &amp;lt;- &amp;quot;{name} fdla {last} {other}&amp;quot;
+l &amp;lt;- list(name = &amp;quot;NAME&amp;quot;, last = &amp;quot;LAST&amp;quot;, other = &amp;quot;OTHER&amp;quot;,  mote = &amp;quot;fdasf&amp;quot;)
+d &amp;lt;- data.frame(name = c(&amp;quot;ana&amp;quot;,&amp;quot;jp&amp;quot;), last = c(&amp;quot;heran&amp;quot;, &amp;quot;marin&amp;quot;), n = c(1,2))
+
+rep_tpl(tpl, l)
+rep_tpl(tpl, d)
+pystr::pystr_format(tpl, l)
+pystr::pystr_format(tpl, d)
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;microbenchmark::microbenchmark(
+  rep_tpl(tpl, l),
+  pystr::pystr_format(tpl, l)
+)
+#Unit: microseconds
+#                        expr    min       lq      mean   median       uq     max neval
+#             rep_tpl(tpl, l) 42.500  47.8885  65.65773  53.3420  58.1765 399.373   100
+# pystr::pystr_format(tpl, l) 95.278 105.8865 131.94053 118.6685 128.6940 542.297   100
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;microbenchmark::microbenchmark(
+  rep_tpl(tpl, d),
+  pystr::pystr_format(tpl, d)
+)
+#Unit: microseconds
+#                        expr     min      lq     mean   median       uq      max neval
+#             rep_tpl(tpl, d) 154.627 165.006 203.1093 177.5755 210.0555  586.461   100
+# pystr::pystr_format(tpl, d) 394.064 416.068 493.6397 443.0620 509.1740 1027.248   100
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here is my session Info&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt; sessionInfo()
+R version 3.3.2 (2016-10-31)
+Platform: x86_64-apple-darwin13.4.0 (64-bit)
+Running under: macOS Sierra 10.12.5
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+loaded via a namespace (and not attached):
+ [1] colorspace_1.3-2       scales_0.4.1           microbenchmark_1.4-2.1
+ [4] lazyeval_0.2.0         plyr_1.8.4             tools_3.3.2           
+ [7] gtable_0.2.0           tibble_1.3.3           Rcpp_0.12.11.4        
+[10] ggplot2_2.2.1          grid_3.3.2             rlang_0.1.1           
+[13] munsell_0.4.3          pystr_2.0.0   
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>S3 bucket public access policy</title>
@@ -41,7 +131,7 @@
       <pubDate>Wed, 10 May 2017 00:00:00 +0000</pubDate>
       
       <guid>/2017-05-10-a-viztype-a-day.../</guid>
-      <description>&lt;p&gt;There are 235 days left in the year. I will start today to post a new visualization type every day on twitter with the hashtag #viztype&lt;/p&gt;
+      <description>&lt;p&gt;There are 235 days left in the year. I will start today to post a new visualization type every (almost) day on twitter with the hashtag #viztype.&lt;/p&gt;
 
 &lt;p&gt;There are a bunch of different visualization types. Most people can recall only a handful but in reality there are a couple hundred already out there.&lt;/p&gt;
 
@@ -49,12 +139,66 @@
 
 &lt;p&gt;Updates here:&lt;/p&gt;
 
+&lt;p&gt;Apparently I cannot commit to tweet every single day. Sometimes I tweet a viztype twice a day and sometimes I forget to do it while on conferences or weekends. Here they are all gathered.&lt;/p&gt;
+
 &lt;ul&gt;
 &lt;li&gt;2017-05-10 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/862337558256115714&#34;&gt;Pie chart&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;2017-05-11 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/862742294499282944&#34;&gt;Waffle Chart&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;2017-05-12 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/863059205996990464&#34;&gt;Bulseye graph&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;2017-05-13 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/863615772223971329&#34;&gt;Dial Chart&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;2017-05-14 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/863875933836517377&#34;&gt;Nightingale Rose Chart&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-05-15 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/864146460530532357&#34;&gt;Vertical Bar Chart&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-05-16 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/864522123649220608&#34;&gt;Sankey Diagram&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-05-17 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/864822201043767297&#34;&gt;Grouped Bar Chart Vertical&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-05-18 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/865247673107873793&#34;&gt;Stacked Vertical Bar Chart&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-05-20 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/865956055850811392&#34;&gt;Slope Graph&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-05-21 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/866492774249574401&#34;&gt;Gauge Chart&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-05-22 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/866832504640110592&#34;&gt;Lollipops&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-05-23 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/867169752774393856&#34;&gt;Area Chart&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-05-24 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/867564361006563329&#34;&gt;Choropleth Numeric&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-05-25 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/867849629085253632&#34;&gt;Pyramid&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-05-26 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/868179211663450115&#34;&gt;Horizon Graph Multiples&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-05-27 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/868590560730165248&#34;&gt;Horizontal Bar Chart with Colors&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-05-28 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/868918502974832640&#34;&gt;Horizonal Lollipops&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-05-29 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/869361021932142592&#34;&gt;Line Chart&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-05-30 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/869667606957092864&#34;&gt;Normalized Stacked Areal&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-06-03 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/871051834672152577&#34;&gt;Geo heatmap&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-06-05 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/871730237033336832&#34;&gt;Treemap&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-06-05 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/871840826573418496&#34;&gt;Watterfall Chart&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-06-06 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/872093816597172224&#34;&gt;Arcs Map&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-06-07 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/872453664757174272&#34;&gt;Arc Diagram&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-06-08 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/872847195724279810&#34;&gt;Bullet Charts&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-06-09 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/873283652620308481&#34;&gt;Vertical Normalized Stacked Chart&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-06-10 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/873514050155622400&#34;&gt;Multiple Lines&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-06-11 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/874062177149341696&#34;&gt;Calendar Heatmap&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-02-12 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/874349138057596931&#34;&gt;Choropleth Map Categoric&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-06-13 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/874599325585862660&#34;&gt;Grouped Bar Chart&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-06-14 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/875061666500812800&#34;&gt;Bubble Charts&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-06-15 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/875370156691738625&#34;&gt;Lollipops difference chart&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-06-16 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/875715040254586882&#34;&gt;Marimekko&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-06-17 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/876114743035133952&#34;&gt;Bar Chart Coloured Vertical&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-06-18 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/876525138942013442&#34;&gt;Wordtree&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-06-19 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/876789344027250689&#34;&gt;3D grouped scatter plot&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-06-20 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/877172762498015232&#34;&gt;Grouped Horizontal Bar Chart Colors&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-06-22 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/877980303217668097&#34;&gt;Bivariate Choropleth&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-06-23 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/878271226468282368&#34;&gt;Subway&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-06-27 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/879724196636618752&#34;&gt;Bullet Charts&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-06-28 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/880104259890679808&#34;&gt;Cartogram&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-06-29 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/880443442639327232&#34;&gt;Area Blocks&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-06-30 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/880850390052466689&#34;&gt;Two y-axis lines&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-07-04 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/882246790246010883&#34;&gt;3D Bars&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-07-05 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/882641217498042368&#34;&gt;Hexbin Map&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-07-06 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/882945292827590656&#34;&gt;Parallel Coords&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-07-07 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/883369255923838976&#34;&gt;Network Rings&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-07-10 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/884452114398937089&#34;&gt;Stacked Area Normalized&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-07-11 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/884968851158519808&#34;&gt;Stacked Stepped Area Normalized&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-07-12 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/885245445416640513&#34;&gt;Pairs Plot&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-07-13 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/885483418741608448&#34;&gt;Partition Chart&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-07-14 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/885904484991479809&#34;&gt;Stacked Circular Bar Chart&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-07-17 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/887049227960037379&#34;&gt;Bars with Target Line&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-07-18 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/887492049372684288&#34;&gt;Quiver Plot&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-07-19 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/887662296423682048&#34;&gt;Depth Area Chart&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-07-20 &lt;a href=&#34;https://twitter.com/jpmarindiaz/status/888080903720841216&#34;&gt;Vertical Stacked Normalized Bar Chart&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -376,64 +520,6 @@ git push origin master
 &lt;p&gt;&lt;a href=&#34;http://lasillavacia.com/queridodiario/votar-por-los-peores-en-bogota-y-medellin-52171&#34;&gt;Vote aquí por quien crea que es el peor candidato para Bogotá, Medellín. &lt;/a&gt; &lt;/p&gt;
 
 &lt;p&gt;También puede votar directamente &lt;a href=&#34;https://randommonkey.typeform.com/to/aKK12D&#34;&gt;aquí&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Hello R Markdown</title>
-      <link>/2015-07-23-hello-r-markdown/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
-      
-      <guid>/2015-07-23-hello-r-markdown/</guid>
-      <description>&lt;!-- BLOGDOWN-HEAD --&gt;
-
-
-
-&lt;!-- /BLOGDOWN-HEAD --&gt;
-
-&lt;!-- BLOGDOWN-BODY-BEFORE --&gt;
-
-&lt;!-- /BLOGDOWN-BODY-BEFORE --&gt;
-
-&lt;div id=&#34;r-markdown&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;R Markdown&lt;/h1&gt;
-&lt;p&gt;This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see &lt;a href=&#34;http://rmarkdown.rstudio.com&#34; class=&#34;uri&#34;&gt;http://rmarkdown.rstudio.com&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;You can embed an R code chunk like this:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(cars)
-##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00
-fit &amp;lt;- lm(dist ~ speed, data = cars)
-fit
-## 
-## Call:
-## lm(formula = dist ~ speed, data = cars)
-## 
-## Coefficients:
-## (Intercept)        speed  
-##     -17.579        3.932&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;including-plots&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Including Plots&lt;/h1&gt;
-&lt;p&gt;You can also embed plots. See Figure &lt;a href=&#34;#fig:pie&#34;&gt;1&lt;/a&gt; for example:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;par(mar = c(0, 1, 0, 1))
-pie(
-  c(280, 60, 20),
-  c(&amp;#39;Sky&amp;#39;, &amp;#39;Sunny side of pyramid&amp;#39;, &amp;#39;Shady side of pyramid&amp;#39;),
-  col = c(&amp;#39;#0292D8&amp;#39;, &amp;#39;#F7EA39&amp;#39;, &amp;#39;#C4B632&amp;#39;),
-  init.angle = -50, border = NA
-)&lt;/code&gt;&lt;/pre&gt;
-&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:pie&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;/2015-07-23-hello-r-markdown/figures/pie-1.png&#34; alt=&#34;A fancy pie chart.&#34; width=&#34;672&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;
-Figure 1: A fancy pie chart.
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 </description>
     </item>
     

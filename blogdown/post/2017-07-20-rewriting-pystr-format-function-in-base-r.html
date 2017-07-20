@@ -1,0 +1,66 @@
+---
+title: Rewriting pystr::format function in base R rmd
+date: '2017-07-20'
+---
+
+<!-- BLOGDOWN-HEAD -->
+
+
+
+<!-- /BLOGDOWN-HEAD -->
+
+<!-- BLOGDOWN-BODY-BEFORE -->
+
+<!-- /BLOGDOWN-BODY-BEFORE -->
+
+<pre class="r"><code>rep_tpl &lt;- function(tpl, l){
+  if(class(l) == &quot;list&quot;){
+    listToNameValue &lt;- function(l){
+      mapply(function(i,j) list(name = j, value = i), l, names(l), SIMPLIFY = FALSE)
+    }
+    f &lt;- function(tpl,l){
+      gsub(paste0(&quot;{&quot;,l$name,&quot;}&quot;), l$value, tpl, fixed = TRUE)
+    }
+    return( Reduce(f,listToNameValue(l), init = tpl))
+  }
+  if(class(l) == &quot;data.frame&quot;){
+    myTranspose &lt;- function(x) lapply(1:nrow(x), function(i) lapply(d, &quot;[[&quot;, i))
+    return( unlist(lapply(myTranspose(l), function(l, tpl) rep_tpl(tpl, l), tpl = tpl)) )
+  }
+}</code></pre>
+<pre class="r"><code>tpl &lt;- &quot;{name} fdla {last} {other}&quot;
+l &lt;- list(name = &quot;NAME&quot;, last = &quot;LAST&quot;, other = &quot;OTHER&quot;,  mote = &quot;fdasf&quot;)
+d &lt;- data.frame(name = c(&quot;ana&quot;,&quot;jp&quot;), last = c(&quot;heran&quot;, &quot;marin&quot;), n = c(1,2))
+
+rep_tpl(tpl, l)</code></pre>
+<pre><code>## [1] &quot;NAME fdla LAST OTHER&quot;</code></pre>
+<pre class="r"><code>rep_tpl(tpl, d)</code></pre>
+<pre><code>## [1] &quot;ana fdla heran {other}&quot; &quot;jp fdla marin {other}&quot;</code></pre>
+<pre class="r"><code>pystr::pystr_format(tpl, l)</code></pre>
+<pre><code>## [1] &quot;NAME fdla LAST OTHER&quot;</code></pre>
+<pre class="r"><code>pystr::pystr_format(tpl, d)</code></pre>
+<pre><code>##      [,1]                    
+## [1,] &quot;ana fdla heran {other}&quot;
+## [2,] &quot;jp fdla marin {other}&quot;</code></pre>
+<pre class="r"><code>microbenchmark::microbenchmark(
+  rep_tpl(tpl, l),
+  pystr::pystr_format(tpl, l)
+)</code></pre>
+<pre><code>## Unit: microseconds
+##                         expr   min      lq      mean   median      uq
+##              rep_tpl(tpl, l) 42.30 45.9445  54.33717  48.2235  55.710
+##  pystr::pystr_format(tpl, l) 93.75 97.1685 112.37807 101.4015 107.138
+##      max neval
+##  134.490   100
+##  300.747   100</code></pre>
+<pre class="r"><code>microbenchmark::microbenchmark(
+  rep_tpl(tpl, d),
+  pystr::pystr_format(tpl, d)
+)</code></pre>
+<pre><code>## Unit: microseconds
+##                         expr     min       lq     mean   median       uq
+##              rep_tpl(tpl, d) 152.427 187.6950 244.2666 224.5470 256.1775
+##  pystr::pystr_format(tpl, d) 404.944 489.1605 560.7437 533.1645 610.3180
+##       max neval
+##   510.121   100
+##  1394.308   100</code></pre>
