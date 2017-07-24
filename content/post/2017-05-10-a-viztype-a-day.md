@@ -73,4 +73,6 @@ Apparently I cannot commit to tweet every single day. Sometimes I tweet a viztyp
 - 2017-07-18 [Quiver Plot](https://twitter.com/jpmarindiaz/status/887492049372684288)
 - 2017-07-19 [Depth Area Chart](https://twitter.com/jpmarindiaz/status/887662296423682048)
 - 2017-07-20 [Vertical Stacked Normalized Bar Chart](https://twitter.com/jpmarindiaz/status/888080903720841216)
-
+- 2017-07-22 [Ternary Plot](https://twitter.com/jpmarindiaz/status/888770702572216320)
+- 2017-07-23 [QQplot](https://twitter.com/jpmarindiaz/status/889156576682143744)
+- 2017-07-24 [Venn Diagram](https://twitter.com/jpmarindiaz/status/889529650065682433)
