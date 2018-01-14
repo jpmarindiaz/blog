@@ -6,8 +6,133 @@
     <description>Recent content on jpmarindiaz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 20 Jul 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 14 Jan 2018 00:00:00 +0000</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Self service interactive visualization apps with Shiny and Htmlwidgets</title>
+      <link>/2018-01-14-self-service-interactive-visualization-apps-with-shiny-and-htmlwidgets/</link>
+      <pubDate>Sun, 14 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018-01-14-self-service-interactive-visualization-apps-with-shiny-and-htmlwidgets/</guid>
+      <description>&lt;p&gt;This is a post about building interactive visualization apps with Shiny and Htmlwidgets.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The status of my R packages</title>
+      <link>/2018-01-10-the-status-of-my-r-packages/</link>
+      <pubDate>Wed, 10 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018-01-10-the-status-of-my-r-packages/</guid>
+      <description>
+
+&lt;p&gt;I have been writing different packages for a while now. I have never tried to publish them on CRAN becuse I thought they were never good enough, so most of the time I didn&amp;rsquo;t even bother to document them properly or even to build unit tests.&lt;/p&gt;
+
+&lt;p&gt;I am writing this now because, as new years resolution I commited to polish and properly publish my most promising packages.&lt;/p&gt;
+
+&lt;p&gt;So here it is, I am putting the word out and we will see at the end of the year how many packages I manage to make available to other curious R Users. Here they are in alphabetical order.&lt;/p&gt;
+
+&lt;h1 id=&#34;cloudinary&#34;&gt;cloudinaRy&lt;/h1&gt;
+
+&lt;p&gt;An R package to interact with Cloudinary from R&lt;/p&gt;
+
+&lt;h1 id=&#34;datafringe&#34;&gt;datafringe&lt;/h1&gt;
+
+&lt;p&gt;It adds dictionaries to a dataframe in a new type of objects that I call a Fringe.&lt;/p&gt;
+
+&lt;h1 id=&#34;deduplicate&#34;&gt;deduplicate&lt;/h1&gt;
+
+&lt;p&gt;An attempt to make data deduplication easier.&lt;/p&gt;
+
+&lt;h1 id=&#34;d3plus&#34;&gt;d3plus&lt;/h1&gt;
+
+&lt;p&gt;An htmlwidget to make tidy visualizations with d3plus.js&lt;/p&gt;
+
+&lt;h1 id=&#34;dmaps&#34;&gt;dmaps&lt;/h1&gt;
+
+&lt;p&gt;An htmlwidget to build interactive maps based on datamaps.js
+It will be renamed shortly.&lt;/p&gt;
+
+&lt;h1 id=&#34;dsappmodules&#34;&gt;dsAppModules&lt;/h1&gt;
+
+&lt;p&gt;Modules to make development of shiny apps easier.&lt;/p&gt;
+
+&lt;h1 id=&#34;geodata&#34;&gt;geodata&lt;/h1&gt;
+
+&lt;p&gt;R Package that has geodata ready to be plotted in different formats. The advantage is that it intends to have geographical codes for regions that are standard for each country.&lt;/p&gt;
+
+&lt;h1 id=&#34;imteractive&#34;&gt;imteractive&lt;/h1&gt;
+
+&lt;p&gt;Make interactive images using d3. Add tooltips and other interactive elements to static images in html.&lt;/p&gt;
+
+&lt;h1 id=&#34;geomagic&#34;&gt;geomagic&lt;/h1&gt;
+
+&lt;p&gt;Tidy wrapper for making maps in ggplot.&lt;/p&gt;
+
+&lt;h1 id=&#34;mop&#34;&gt;mop&lt;/h1&gt;
+
+&lt;p&gt;A package to clean data&lt;/p&gt;
+
+&lt;h1 id=&#34;pseudoviz&#34;&gt;pseudoviz&lt;/h1&gt;
+
+&lt;p&gt;A package/gallery of visualization types. It has now some basic funcions to make graph recommendations based on some input data. It relies on [homodatum][./#homodatum]&lt;/p&gt;
+
+&lt;h1 id=&#34;homodatum&#34;&gt;homodatum&lt;/h1&gt;
+
+&lt;p&gt;I believe in the tidyverse and the power of defining column types. However, there are data types that are still thought and created for computers to understand and not for humans.
+Homodatum tries to solve this issue by introducing data types for humans. Instead of strings like computers think, we think in categories or texts. Instead of int we think in countries codes and so on.&lt;/p&gt;
+
+&lt;h1 id=&#34;ggmagic&#34;&gt;ggmagic&lt;/h1&gt;
+
+&lt;p&gt;Tidy wrapper for ggplots. Is an attempt to make visualizations work out of the box for different column types.
+Warning: Might be considered a stupid package because it only wraps ggplot functions.
+It does help me make data questioning way faster.&lt;/p&gt;
+
+&lt;h1 id=&#34;hgchmagic&#34;&gt;hgchmagic&lt;/h1&gt;
+
+&lt;p&gt;Tidy wrapper for all possible highcharter functions. Same idea behind ggmagic.&lt;/p&gt;
+
+&lt;h1 id=&#34;paletero&#34;&gt;paletero&lt;/h1&gt;
+
+&lt;p&gt;Its goal is to make it easier to create palettes and map different data types to colors. Still not sure if it is a good idea.&lt;/p&gt;
+
+&lt;h1 id=&#34;rneo4jutils&#34;&gt;RNeo4jUtils&lt;/h1&gt;
+
+&lt;p&gt;Wrapper utilities to be used along with RNeo4j package.&lt;/p&gt;
+
+&lt;h1 id=&#34;shinysteps&#34;&gt;shinysteps&lt;/h1&gt;
+
+&lt;p&gt;Shiny layout to create steps or pages apps. The ones that you go from one page to the next.&lt;/p&gt;
+
+&lt;h1 id=&#34;shi18ny&#34;&gt;shi18ny&lt;/h1&gt;
+
+&lt;p&gt;Introduces internationalization to shiny apps using some basic translation and custom translations for different languages using YAML files.&lt;/p&gt;
+
+&lt;h1 id=&#34;sigmagraph&#34;&gt;sigmaGraph&lt;/h1&gt;
+
+&lt;p&gt;An htmlwidget to build interactive network visualizations using sigma.js and linkourious.js&lt;/p&gt;
+
+&lt;h1 id=&#34;timelinejs&#34;&gt;timelinejs&lt;/h1&gt;
+
+&lt;p&gt;An htmlwidget for timeline.js to be used with tidy data.&lt;/p&gt;
+
+&lt;h1 id=&#34;some-older-attempts&#34;&gt;Some older attempts&lt;/h1&gt;
+
+&lt;p&gt;I haven&amp;rsquo;t worked on these packages in a while, but might re___ at some point.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;captureWidget&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;other-planned-packages&#34;&gt;Other planned packages&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;tidytweenr&lt;/li&gt;
+&lt;li&gt;?&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Rewriting pystr::pystr_format function in base R</title>
@@ -458,72 +583,6 @@ git push origin master
       
       <guid>/proyectos/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>/about/</link>
-      <pubDate>Thu, 05 May 2016 21:48:51 -0700</pubDate>
-      
-      <guid>/about/</guid>
-      <description>&lt;p&gt;I like data and science. This is my blog.&lt;/p&gt;
-
-&lt;p&gt;On twitter: &lt;a href=&#34;http://twitter.com/jpmarindiaz&#34;&gt;http://twitter.com/jpmarindiaz&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;On github: &lt;a href=&#34;http://github.com/jpmarindiaz&#34;&gt;http://github.com/jpmarindiaz&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;This site was built with &lt;a href=&#34;https://github.com/rstudio/blogdown&#34;&gt;blogdown&lt;/a&gt;.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Que hacer contra el sesgo que ocasionan las encuestas y el voto desinformado</title>
-      <link>/2015-10-23-que-hacer-contra-el-sesgo-que-ocasionan-las-encuestas-y-el-voto-desinformado/</link>
-      <pubDate>Fri, 23 Oct 2015 20:00:00 +0000</pubDate>
-      
-      <guid>/2015-10-23-que-hacer-contra-el-sesgo-que-ocasionan-las-encuestas-y-el-voto-desinformado/</guid>
-      <description>&lt;p&gt;¿Qué hacer contra el sesgo que ocasionan las encuestas y el voto desinformado?&lt;/p&gt;
-
-&lt;p&gt;Los sistemas de votación tienen como objetivo principal producir una agregación de preferencias individuales que representen de manera justa las preferencias de un grupo.&lt;/p&gt;
-
-&lt;p&gt;Desafortunadamente, muchas veces como votantes nos vemos forzados a escoger entre los candidatos que tienen más oportunidades de ganar, incluso si nuestra preferencia original es cualquier otra opción. Esto se puede resumir en: &amp;ldquo;todos los votos que no sean por el segundo puesto, son votos por el ganador&amp;rdquo;.&lt;/p&gt;
-
-&lt;p&gt;Este tipo de comportamientos, propios de los sistemas de votación utilizados en la actualidad pueden ocasionar que los resultados de las votaciones no sean necesariamente los mejores o los más apropiados para una sociedad que está decidiendo sobre sí misma.&lt;/p&gt;
-
-&lt;p&gt;Cabe notar, sin embargo, que tampoco existe una regla clara y universal para determinar una agregación de preferencias de votantes individuales que sea justa. Entre los criterios que debería cumplir algún sistema de votación para ser justo o beneficioso para el grupo de votantes, podemos incluir las siguientes:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Si todos los votantes prefieren a Pepito sobre Menganito, entonces el agregado debería escoger a Pepito.&lt;/li&gt;
-&lt;li&gt;Si un grupo de votantes ya determinó que Pepito es mejor que Menganito, y luego aparece Sutanito como una nueva opción, el hecho de que aparezca Sutanito no debería hacer que los votantes cambien la preferencia original que tenían de Pepito sobre Menganito.&lt;/li&gt;
-&lt;li&gt;Un solo votante no debería poder decidir sobre todos los demás y determinar el ganador.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Teniendo en cuenta este grupo de condiciones, ¿existe algún sistema de votación justo?.&lt;/p&gt;
-
-&lt;p&gt;El economista Kenneth Arrow demostró en su tesis doctoral y posteriormente en su libro “_Social welfare and individual values_” que no existe un sistema de votación que satisfaga los tres criterios mencionados anteriormente, siempre y cuando se cumpla que:
-- Cada votante es capaz de determinar su candidato preferido para todas las parejas posibles de candidato.
-- Y que si cada votante prefiere a Pepito sobre Menganito, y a Menganito sobre Sutanito, se puede concluir que el votante prefiere a Pepito sobre Sutanito.&lt;/p&gt;
-
-&lt;p&gt;Dados estos análisis, las perspectivas de encontrar un sistema de votación que represente de la mejor manera a un grupo de votantes se reducen bastante. Si a esto le sumamos nuestra preferencia de votar por el ganador y el sesgo que esto ocasiona en las encuestas, es claro que tenemos que pensar en nuevas maneras de contrarrestar nuestras malas elecciones.&lt;/p&gt;
-
-&lt;p&gt;Es natural que al acercarse las elecciones se vayan coordinando las opiniones de los votantes hacia los mejores candidatos, ¿o no?. ¿Es posible, que el simple hecho de hacer múltiples encuestas antes del día de elecciones alimente un círculo vicioso que acelera la favorabilidad de candidatos más populares sobre los menos reconocidos, pero no necesariamente los mejores?.&lt;/p&gt;
-
-&lt;p&gt;Para entender un poco los fenómenos explicados los invitamos a participar en un experimento llamado Voto en negro, en el cuál puede votar por el peor candidato. Al final, el candidato ganador, sería aquel que tuviera menos votos.&lt;/p&gt;
-
-&lt;p&gt;Si usáramos el Voto en negro en época de elecciones para las encuestas (o incluso en elecciones reales), podríamos atacar los siguientes problemas de una manera innovadora:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;La abstención&lt;/strong&gt;: En el sistema tradicional la abstención representa el inconformismo o la indiferencia por todos los candidatos. La abstención, en el Voto en negro, representaría el conformismo y la aprobación por todos los candidatos. ¿Si nuestro sistema de votación fuera votar por el peor candidato, cree que más gente participaría?&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Mirar otras opciones&lt;/strong&gt;: Si usted tiene claro quién es su candidato preferido en el voto tradicional no tiene incentivo para mirar otras opciones. Con el Voto en negro, si usted tiene claro quién es el peor candidato tiene el incentivo para conocer quiénes son los candidatos menos malos, es decir los que ganarían.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Sesgo en las encuestas&lt;/strong&gt;: Las primeras encuestas en época de elecciones darían cómo resultado a los candidatos más reconocidos como los peores, dejando candidatos desconocidos en el radar público. Como ciudadano, ¿Dejaría que un desconocido fuera liderando las encuestas?. El círculo vicioso se convertiría en un círculo virtuoso en el cuál se autodepura la información existente en el imaginario colectivo sobre los candidatos para tomar decisiones más informadas.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Entonces, ¿quién es el peor?.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://lasillavacia.com/queridodiario/votar-por-los-peores-en-bogota-y-medellin-52171&#34;&gt;Vote aquí por quien crea que es el peor candidato para Bogotá, Medellín. &lt;/a&gt; &lt;/p&gt;
-
-&lt;p&gt;También puede votar directamente &lt;a href=&#34;https://randommonkey.typeform.com/to/aKK12D&#34;&gt;aquí&lt;/a&gt;&lt;/p&gt;
-</description>
     </item>
     
   </channel>
