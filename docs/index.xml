@@ -10,6 +10,72 @@
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Introducción a las pseudo-visualizaciones</title>
+      <link>/2018-01-14-introducci%C3%B3n-a-las-pseudo-visualizaciones/</link>
+      <pubDate>Sun, 14 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018-01-14-introducci%C3%B3n-a-las-pseudo-visualizaciones/</guid>
+      <description>&lt;p&gt;Pseudoviz es una descripción de alto nivel sobre las cualidades descriptivas y funcionales con las que cuenta una visualización.&lt;/p&gt;
+
+&lt;p&gt;Usa esbozos para representar visualizaciones estereotípicas de manera que sean entendidas por humanos. Usualmente se obvian detalles esenciales para la creación de la visualización bien sea por propiedades particulares del software que se use para visualizar o porque los detalles se pueden entender como una variación de la visualización. Los detalles omitidos pueden ser leyendas, títulos, ticks, rayas o anotaciones.&lt;/p&gt;
+
+&lt;p&gt;El objetivo de usar una pseudoviz es ayudar en procesos creativos o científicos de comunicación de datos independiente del ambiente de desarrollo de manera eficiente con la definición de borradores y esquemas que muestran los principios clave de una visualización antes de su implementación.&lt;/p&gt;
+
+&lt;p&gt;Se pueden usar en guías de visualización de datos y en publicaciones que muestren diferentes tipos de visualización, así como en la planeación de páneles de control (dashboards) o historias de periodismo de datos para trazar un mapa de ruta antes de la implementación final. En el proceso de creación se pueden acompañar de anotaciones de texto que describan detalles específicos como interactividad.&lt;/p&gt;
+
+&lt;p&gt;No existe un estándar para la creación de pseudoviz ya que es independiente de la estructura de datos que representan o el mecanismo de renderización. Es recomendable, en el diseño de una pseudoviz mapear los posibles tipos o estructura de datos de entrada que una eventual visualización implementada debería tener.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Introducing pseudo-visualizations</title>
+      <link>/2018-01-14-introducing-pseudo-visualizations/</link>
+      <pubDate>Sun, 14 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018-01-14-introducing-pseudo-visualizations/</guid>
+      <description>
+
+&lt;p&gt;A pseudo-visualization is a high-level representation of the functional and descriptive parts of a visualization. It uses sketches and data types to represent stereotypical visualizations that can be understood by humans.&lt;/p&gt;
+
+&lt;p&gt;A pseudo-visualization helps creative processes or communication of data driven messages independent of the visualization development environment (materials, software packages or design). Their sketches and specification provide an efficient guide to exchanges ideas around data driven messages and key components before the implementation of the visualization itself.&lt;/p&gt;
+
+&lt;p&gt;In a pseudo-visualization details like legends, titles, ticks or annotations are omitted. These details are usually design choices or constrains determined by the visualization designer or by software use to visualize data.&lt;/p&gt;
+
+&lt;p&gt;Pseudo-visualizations can be used in the design of data based interfaces or reports like dashboards or data journalism pieces. They can be particularly helpful in the design process by providing an implementation roadmap around the following:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Data that is actually required for the different parts of the report or dashboard.&lt;/li&gt;
+&lt;li&gt;Tools that can be used to generate the specific visualization.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;One could use pseudo-visualizations for wireframing control panels and data driven stories. The wireframes can include annotations on top of the pseudo-visualizations to describe specific details like the input data and the desired interactivity features.&lt;/p&gt;
+
+&lt;p&gt;Once iterations around the full sketch evolve into a compeling data driven story and they are approved, the implementation phase can start. Notice that the implementation phase is an iterative process. That is because at the end, no matter how visualization designer envisions the final product, the visualization is constrained by the data availability and the data types used.&lt;/p&gt;
+
+&lt;p&gt;There exists not a single standard for the creation of a pseudo-visualization, in fact, any doodle that resembles some data mapped into visual clues will work just fine in the design process, at least for the visual part since it is also recommended to incorporate the data structure and types that would be used while creating the final visualizations.&lt;/p&gt;
+
+&lt;p&gt;There are a couple of galleries of visualization types available. Be aware that identifying also the input data structures and types is part of the pseudo-visualization.&lt;/p&gt;
+
+&lt;h2 id=&#34;pseudoviz&#34;&gt;Pseudoviz&lt;/h2&gt;
+
+&lt;p&gt;Pseudoviz is a gallery of visualization types. Not only does it provide more than 200 visualization types but also the data structures need to build those visualizations in a tidy format.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://pseudoviz.jpmarindiaz.com&#34;&gt;&lt;img src=&#34;./img/pseudoviz/pseudoviz-gallery.png&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;other-visualization-galleries&#34;&gt;Other visualization galleries&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://datavizcatalogue.com/index.html&#34;&gt;https://datavizcatalogue.com/index.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://datavizproject.com/&#34;&gt;http://datavizproject.com/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://python-graph-gallery.com/&#34;&gt;https://python-graph-gallery.com/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/ft-interactive/chart-doctor/blob/master/visual-vocabulary/Visual-vocabulary.pdf&#34;&gt;https://github.com/ft-interactive/chart-doctor/blob/master/visual-vocabulary/Visual-vocabulary.pdf&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.r-graph-gallery.com/all-graphs/&#34;&gt;http://www.r-graph-gallery.com/all-graphs/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://guides.library.duke.edu/datavis/vis_types&#34;&gt;https://guides.library.duke.edu/datavis/vis_types&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Self service interactive visualization apps with Shiny and Htmlwidgets</title>
       <link>/2018-01-14-self-service-interactive-visualization-apps-with-shiny-and-htmlwidgets/</link>
       <pubDate>Sun, 14 Jan 2018 00:00:00 +0000</pubDate>
@@ -565,24 +631,6 @@ git push origin master
 &lt;li&gt;Number house&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>proyectos</title>
-      <link>/home/</link>
-      <pubDate>Sun, 16 Oct 2016 15:01:58 +0000</pubDate>
-      
-      <guid>/home/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>proyectos</title>
-      <link>/proyectos/</link>
-      <pubDate>Sun, 16 Oct 2016 15:01:58 +0000</pubDate>
-      
-      <guid>/proyectos/</guid>
-      <description></description>
     </item>
     
   </channel>
