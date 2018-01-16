@@ -6,8 +6,18 @@
     <description>Recent content on jpmarindiaz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 14 Jan 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 15 Jan 2018 00:00:00 +0000</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Rethinking data types for humans</title>
+      <link>/2018-01-15-rethinking-data-types-for-humans/</link>
+      <pubDate>Mon, 15 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018-01-15-rethinking-data-types-for-humans/</guid>
+      <description>&lt;p&gt;Every visualization library out there would benefit a lot from having tidy representations for the input data formats they need. Whether it is geographical data or texts, identifying tidy data as the inputs for visualizations is a huge gain for the developers and the end users, validations can be more easily introduced and transition from one visualization software to other would be smoother if the visualizations had a common tidy data interface.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Introducción a las pseudo-visualizaciones</title>
@@ -614,22 +624,6 @@ git push origin master
 
 &lt;pre&gt;&lt;code&gt;ln -s &amp;quot;/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl&amp;quot; /usr/local/bin/subl
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Projects</title>
-      <link>/projects/</link>
-      <pubDate>Mon, 17 Oct 2016 10:26:39 +0000</pubDate>
-      
-      <guid>/projects/</guid>
-      <description>&lt;p&gt;These are my projects:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Voto en negro&lt;/li&gt;
-&lt;li&gt;Pseudoviz&lt;/li&gt;
-&lt;li&gt;Number house&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     
